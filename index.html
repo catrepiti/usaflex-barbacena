@@ -6,6 +6,23 @@
   <title>Usaflex Barbacena | Conforto e Elegância</title>
   <meta name="description" content="Usaflex Barbacena - Elegância e conforto que acompanha sua rotina. Atendimento consultivo via WhatsApp.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ff375c'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='38' fill='%23ffd94e'%3EU%3C/text%3E%3C/svg%3E">
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1503972121772249');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1503972121772249&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1857,6 +1874,22 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
+      link.addEventListener('click', function() {
+        var label = 'WhatsApp';
+        if (this.classList.contains('header-cta')) label = 'Header CTA';
+        else if (this.classList.contains('btn-primary')) label = 'Hero CTA';
+        else if (this.classList.contains('btn-secondary')) label = 'Desconto CTA';
+        else if (this.classList.contains('product-btn')) label = 'Produto - ' + (this.closest('.product-card')?.querySelector('.product-ref')?.textContent || '');
+        else if (this.classList.contains('btn-dark')) label = 'CTA Final';
+        else if (this.classList.contains('whatsapp-float')) label = 'WhatsApp Flutuante';
+        if (typeof fbq !== 'undefined') {
+          fbq('track', 'Contact', { content_name: label });
+          fbq('track', 'Lead', { content_name: label });
+        }
+      });
+    });
   </script>
 </body>
 </html>
